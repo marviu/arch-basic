@@ -630,7 +630,11 @@ state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
     Arch Basic Install Public
-    Copyright (C) 2021  Ermanno Ferrari
+    Copyright (C) 2021 Ermanno Ferrari
+    https://gitlab.com/eflinux/arch-basic
+
+    Arch Basic Setup Script for myself
+    Copyright (C) 2023  Marvin
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
@@ -659,3 +663,4 @@ specific requirements.
 if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <https://www.gnu.org/licenses/>.
+

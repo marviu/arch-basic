@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Variables
+locale_gen_filepath="/etc/locale.gen"
+
+# Check if an argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <locale_to_uncomment>"
+    exit 1
+fi
+
+locale_to_uncomment="$1"
+
+
+# Check if it needs to be uncommented
+count_commented=$(grep -o -E "#$locale_to_uncomment" "$locale_gen_filepath" | wc -l)
+
+# Use sed to uncomment the specifiec locale
+if [ "$count_commented" -eq 1 ]
+then
+    echo "Uncommenting '$locale_to_uncomment' in /etc/locale.gen"
+    sudo sed -i "/^#$locale_to_uncomment/s/^#//" "$locale_gen_filepath"
+else
+    echo "Couldn't find '#$locale_to_uncomment'"
+    count_uncommented=$(grep -o -E "$locale_to_uncomment" "$locale_gen_filepath" | wc -l)
+    if [ $count_uncommented -gt 0 ]
+    then
+        echo "Locale already uncommented."
+    else
+        echo "Error: /etc/locale.gen is different."
+    fi
+fi
+

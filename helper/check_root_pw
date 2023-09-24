@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check if the root password hash exists in /etc/shadow
+if grep -q '^root:[*!]' /etc/shadow; then
+    echo "Root password is not set."
+    passwd
+else
+    echo "Root password is set."
+fi
+
