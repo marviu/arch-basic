@@ -10,8 +10,8 @@ A small summary:
 4. Format the partitions
 5. Mount the partitions
 6. Install the base packages into /mnt
-    (pacstrap -K /mnt base linux linux-firmware networkmanager git vim man-db amd-ucode)
-7. Generate the fstab file with genfstab -U /mnt >> /mnt/etc/FSTAB
+    (pacstrap -K /mnt base linux linux-firmware git vim man-db amd-ucode)
+7. Generate the fstab file with genfstab -U /mnt >> /mnt/etc/fstab
 8. Chroot in with arch-chroot /mnt
 9. Download the git repository with git clone https://github.com/marviu/arch-basic.git
 10. Execute ./base.sh

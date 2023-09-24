@@ -6,6 +6,8 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Define bash helper folder 'h'
 h="bash $script_dir/helper"
 
+ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+hwclock --systohc
 $h/uncomment_locale "en_CA.UTF-8 UTF-8"
 $h/uncomment_locale "de_DE.UTF-8 UTF-8"
 locale-gen
@@ -14,7 +16,7 @@ $h/findOrAdd_line /etc/vconsole.conf "KEYMAP=de-latin1"
 echo "aoba" > /etc/hostname
 $h/check_root_pw
 
-# pacman -S grub efibootmgr networkmanager...
+pacman -S networkmanager
 
 # pacman -S --noconfirm xf86-video-amdgpu
 
