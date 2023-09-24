@@ -21,6 +21,8 @@ if [ -f "$file_path" ]; then
         echo "Config '$file_path': '$desired_line' added."
     fi
 else
-    echo "Error: '$desired_line' couldn't be added, $file_path doesn't exist"
+    echo "INFO: '$file_path' doesn't exist."
+    echo "$desired_line" > "$file_path"
+    echo "Config '$file_path': '$desired_line' added to a new file."
 fi
 
