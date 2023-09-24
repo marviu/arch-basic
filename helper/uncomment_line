@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Check if arguments are provided
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <filepath> <line_to_uncomment>"
+    exit 1
+fi
+
+filepath="$1"
+line_to_uncomment="$2"
+
+
+# Check if it needs to be uncommented
+count_commented=$(grep -o -E "#$line_to_uncomment" "$filepath" | wc -l)
+
+# Use sed to uncomment the specifiec line
+if [ "$count_commented" -eq 1 ]
+then
+    echo "Uncommenting '$line_to_uncomment' in '$filepath'"
+    sed -i "/^#$line_to_uncomment/s/^#//" "$filepath"
+else
+    echo "Couldn't find '#$line_to_uncomment' in '$filepath'..."
+    count_uncommented=$(grep -o -E "$line_to_uncomment" "$filepath" | wc -l)
+    if [ $count_uncommented -gt 0 ]
+    then
+        echo "'$line_to_uncomment' already uncommented'."
+    else
+        echo "Error: $filepath is different."
+    fi
+fi
+
