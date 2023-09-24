@@ -19,7 +19,7 @@ count_commented=$(grep -o -E "#$locale_to_uncomment" "$locale_gen_filepath" | wc
 if [ "$count_commented" -eq 1 ]
 then
     echo "Uncommenting '$locale_to_uncomment' in /etc/locale.gen"
-    sudo sed -i "/^#$locale_to_uncomment/s/^#//" "$locale_gen_filepath"
+    sed -i "/^#$locale_to_uncomment/s/^#//" "$locale_gen_filepath"
 else
     echo "Couldn't find '#$locale_to_uncomment'"
     count_uncommented=$(grep -o -E "$locale_to_uncomment" "$locale_gen_filepath" | wc -l)
