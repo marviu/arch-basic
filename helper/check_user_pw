@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check if argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <username>"
+    exit 1
+fi
+
+user="$1"
+
+# Check if the password hash exists in /etc/shadow
+if grep -q "^$user:[*!]" /etc/shadow; then
+    echo "User password is not set; $user."
+    passwd "$user"
+else
+    echo "User password is set; $user."
+fi
+

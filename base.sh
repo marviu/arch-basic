@@ -14,7 +14,7 @@ locale-gen
 $h/findOrAdd_line /etc/locale.conf "LANG=en_CA.UTF-8"
 $h/findOrAdd_line /etc/vconsole.conf "KEYMAP=de-latin1"
 echo "aoba" > /etc/hostname
-$h/check_root_pw
+$h/check_user_pw root
 
 pacman -S --needed grub efibootmgr os-prober networkmanager
 
@@ -36,8 +36,8 @@ systemctl enable NetworkManager
 #systemctl enable firewalld
 #systemctl enable acpid
 
-#useradd -m drace
-#echo drace:password | chpasswd
+useradd drace
+$h/check_user_pw drace
 
 #echo "drace ALL=(ALL) ALL" >> /etc/sudoers.d/drace
 
