@@ -16,7 +16,7 @@ $h/findOrAdd_line /etc/vconsole.conf "KEYMAP=de-latin1"
 echo "aoba" > /etc/hostname
 $h/check_user_pw root
 
-pacman -S --needed grub efibootmgr os-prober networkmanager
+pacman -S --needed grub efibootmgr os-prober networkmanager base-devel
 
 # pacman -S --noconfirm xf86-video-amdgpu
 
@@ -36,10 +36,10 @@ systemctl enable NetworkManager
 #systemctl enable firewalld
 #systemctl enable acpid
 
+$h/uncomment_line /etc/sudoers "%wheel ALL=(ALL:ALL) ALL"
 useradd drace
+usermod -a -G wheel drace
 $h/check_user_pw drace
-
-#echo "drace ALL=(ALL) ALL" >> /etc/sudoers.d/drace
 
 echo "Done!"
 
