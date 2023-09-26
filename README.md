@@ -1,6 +1,6 @@
-# Arch Basic Install CLI-Script
+# Arch Basic Install Scripts
 
-In this repository you will find packages-scripts for the base install of Arch Linux and the Gnome and Hyprland desktop environments. Modify the packages to your liking and make sure to understand what you are installing packages. Customisations should be done manually or part of a separate project/script that has not been created yet. Remember that the first part of the Arch Linux install is manual, that is you will have to partition, format and mount the disk yourself. Install the base packages and make sure to include git so that you can clone the repository in chroot.
+In this repository you will find scripts for the base install of Arch Linux and the Gnome and Hyprland desktop environments. Modify the packages to your liking and make sure to understand what you are installing packages. Customisations should be done manually or part of a separate project/script that has not been created yet. Remember that the first part of the Arch Linux install is manual, that is you will have to partition, format and mount the disk yourself. Install the base packages and make sure to include git so that you can clone the repository in chroot.
 
 A small summary:
 
