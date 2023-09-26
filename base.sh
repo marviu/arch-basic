@@ -37,7 +37,7 @@ systemctl enable NetworkManager
 #systemctl enable acpid
 
 $h/uncomment_line /etc/sudoers "%wheel ALL=(ALL:ALL) ALL"
-useradd drace
+useradd -m drace
 usermod -a -G wheel drace
 $h/check_user_pw drace
 
