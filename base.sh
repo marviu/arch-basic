@@ -26,7 +26,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Set up package configurations (xdg-user-dirs, ...)
-sed 's/=.*/\L&/' /etc/xdg/user-dirs.defaults
+sed -i 's/=.*/\L&/' /etc/xdg/user-dirs.defaults
 
 
 systemctl enable NetworkManager
