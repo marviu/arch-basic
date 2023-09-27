@@ -16,15 +16,18 @@ $h/findOrAdd_line /etc/vconsole.conf "KEYMAP=de-latin1"
 echo "aoba" > /etc/hostname
 $h/check_user_pw root
 
-pacman -S --needed grub efibootmgr os-prober networkmanager base-devel
+pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs
 
 # pacman -S --noconfirm xf86-video-amdgpu
 
-# Comment this line and remove os-prober package for non-dualboot
+# GRUB - Comment first line and remove os-prober for non-dualboot setup
 $h/uncomment_line /etc/default/grub "GRUB_DISABLE_OS_PROBER=false"
-
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# Set up package configurations (xdg-user-dirs, ...)
+sed -i 's/=.*/\L&/' /etc/xdg/user-dirs.defaults
+
 
 systemctl enable NetworkManager
 #systemctl enable bluetooth
