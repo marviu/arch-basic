@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#sudo timedatectl set-ntp true
-#sudo hwclock --systohc
+# After systemd-firstboot: We may enable usage of NTP for time-sync (defaults to i.e. systemd-timesyncd)
+sudo timedatectl set-ntp true
+sudo hwclock --systohc
 
 #sudo reflector -c Switzerland -a 12 --sort rate --save /etc/pacman.d/mirrorlist
 #sudo pacman -Sy
