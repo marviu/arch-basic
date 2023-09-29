@@ -25,8 +25,9 @@ $h/uncomment_line /etc/default/grub "GRUB_DISABLE_OS_PROBER=false"
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Set up package configurations (xdg-user-dirs, ...)
+# Set up package configurations (xdg-user-dirs, vim spacing, ...)
 sed -i 's/=.*/\L&/' /etc/xdg/user-dirs.defaults
+$h/findOrAdd_line /etc/vimrc "set tabstop=4 shiftwidth=4 expandtab" '" Make tabbing work as expected, shiftwidth is for << and >>'
 
 
 systemctl enable NetworkManager

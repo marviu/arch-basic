@@ -1,13 +1,19 @@
 #!/bin/bash
 
 # Check if arguments are provided
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <file_path> <desired_line>"
+if [ $# -ne 2 ] && [ $# -ne 3 ]; then
+    echo "Usage: $0 <file_path> <desired_line> [comment]"
     exit 1
 fi
 
 file_path="$1"
 desired_line="$2"
+# Newline only if commant isn't empty
+if [ $# -eq 3 ]; then
+    comment="$3\n"
+else
+    comment=""
+fi
 
 
 # Check if file exists
@@ -17,12 +23,12 @@ if [ -f "$file_path" ]; then
         echo "Config '$file_path': '$desired_line' already exists."
     else
         # If the line doesn't exist, append a \newline and the line to the end.
-        echo "\n$desired_line" >> "$file_path"
+        echo -e "$comment""$desired_line"'\n' >> "$file_path"
         echo "Config '$file_path': '$desired_line' added."
     fi
 else
     echo "INFO: '$file_path' doesn't exist."
-    echo "$desired_line" > "$file_path"
+    echo -e "$comment""$desired_line"'\n' > "$file_path"
     echo "Config '$file_path': '$desired_line' added to a new file."
 fi
 
