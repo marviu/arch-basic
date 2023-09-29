@@ -16,6 +16,20 @@ A small summary:
 9. Download the git repository with git clone https://github.com/marviu/arch-basic.git
 10. Execute ./base.sh
 
+
+## Next Steps
+
+This table is an overview for myself to remember the different locations I have information set up for. Experimenting with a lot of separation.
+
+| Repository       | Scripts / Desc.        | Usage                                       | Userspace |
+|------------------|------------------------|---------------------------------------------|-----------|
+| hub/arch-basic   | base.sh                | config setup, drivers, root settings        | Root      |
+| hub/arch-basic   | gnome.sh / hyprland.sh | general applications, specific applications | User      |
+| .hub/linuxconfig | bare 'config' repo     | environment configuration                   | User      |
+| .hub/hyprgit     | bare 'hyprgit' repo    | specific configuration                      | User      |
+| .lab/.abook      | .abook directory       | contacts                                    | User      |
+
+
 ## Special thanks to
 Ermanno Ferrari, for the basis and inspiration to maintain a Setup script for myself!
 
