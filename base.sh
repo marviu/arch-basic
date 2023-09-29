@@ -16,6 +16,9 @@ $h/findOrAdd_line /etc/vconsole.conf "KEYMAP=de-latin1"
 echo "aoba" > /etc/hostname
 $h/check_user_pw root
 
+# Pacman Setup + install reflector
+$h/initialise_reflector "France,Germany,Belgium,Denmark"
+
 pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs
 
 # pacman -S --noconfirm xf86-video-amdgpu
@@ -31,6 +34,7 @@ $h/findOrAdd_line /etc/vimrc "set tabstop=4 shiftwidth=4 expandtab" '" Make tabb
 
 
 systemctl enable NetworkManager
+systemctl enable reflector.timer
 #systemctl enable bluetooth
 #systemctl enable cups.service
 #systemctl enable sshd

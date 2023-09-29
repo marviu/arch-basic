@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Reflector already initialised?
+if systemctl is-enabled reflector.timer >/dev/null 2>&1; then
+    echo "Reflector is already initialised."
+    exit 0
+fi
+
+# Install reflector
+pacman -S --noconfirm reflector
+
+helper_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# Check if country argument is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <desired_countries>"
+    exit 1
+fi
+
+# The settings I chose here are:
+filepath="/etc/xdg/reflector/reflector.conf"
+countries="$1"
+latest=10
+sort_by="rate"
+
+
+# Uncomment Country
+sed -i "s/^#\s*--country/--country/" "$filepath"
+
+# Change values using RegEx
+sed -i "s/^--country.*/--country $countries/" /etc/xdg/reflector/reflector.conf
+sed -i "s/^--latest.*/--latest $latest/" /etc/xdg/reflector/reflector.conf
+sed -i "s/^--sort.*/--sort $sort_by/" /etc/xdg/reflector/reflector.conf
+
+
+# Check if there is exactly one line for each setting
+country_lines=$(grep -c "^--country" /etc/xdg/reflector/reflector.conf)
+latest_lines=$(grep -c "^--latest" /etc/xdg/reflector/reflector.conf)
+sort_lines=$(grep -c "^--sort" /etc/xdg/reflector/reflector.conf)
+
+if [ $country_lines -eq 1 ] && [ $latest_lines -eq 1 ] && [ $sort_lines -eq 1 ]; then
+    echo "Reflector changes were successfully made, and there is one line for each setting."
+else
+    echo "An error occurred or $filepath doesn't have the expected number of lines for some settings."
+fi
+
+# Run Reflector once
+systemctl start reflector.service
+
