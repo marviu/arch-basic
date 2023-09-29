@@ -18,6 +18,7 @@ $h/check_user_pw root
 
 # Pacman Setup + install reflector
 cp $script_dir/pacman.conf /etc/
+pacman -Syy
 $h/initialise_reflector "France,Germany,Belgium,Denmark"
 
 pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs
