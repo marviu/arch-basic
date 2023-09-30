@@ -9,7 +9,9 @@ sudo hwclock --systohc
 
 # Hardware acceleration packages (AMD) (
 
-sudo pacman -Syu --needed gnome lf
+# Please investigate that on a new install, these are installed properly, and if the -R is needed
+sudo pacman -R pulseaudio pulseaudio-alsa pulseaudio-bluetooth
+sudo pacman -Syu --needed gnome lf pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack
 #sudo pacman -S wayland xorg-wayland pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack foot librewolf discord
 
 #sudo firewall-cmd --add-port=1025-65535/tcp --permanent
