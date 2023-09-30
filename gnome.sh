@@ -9,11 +9,26 @@ sudo hwclock --systohc
 
 # Hardware acceleration packages (AMD) (
 
+# Lists of specific applications
+gnome="gnome"
+
+# Lists of general applications/drivers
+cli_apps="lf"
+pipewire_explicit="pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack"
+multimedia_apps="pavucontrol vlc filezilla"
+communication_apps="discord telegram-desktop teamspeak3"
+fonts="noto-fonts-cjk"
+
+# Requirements taken from LeagueOfLinux, it's AMD-typed(!!)
+gaming_apps="lutris steam"
+amd_drivers="lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader"
+drivers="wine-staging giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse libgpg-error lib32-libgpg-error alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libxcomposite lib32-libxcomposite libxinerama lib32-libgcrypt libgcrypt lib32-libxinerama ncurses lib32-ncurses ocl-icd lib32-ocl-icd libxslt lib32-libxslt libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader"
+
+all_apps="$cli_apps $pipewire_explicit $multimedia_apps $communication_apps $gaming_apps $fonts $amd_drivers $drivers $gnome"
+
 # Please investigate that on a new install, these are installed properly, and if the -R is needed
 sudo pacman -R pulseaudio pulseaudio-alsa pulseaudio-bluetooth
-sudo pacman -Syu --needed gnome lf pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack
-#sudo pacman -S wayland xorg-wayland pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire-jack foot librewolf discord
-
+sudo pacman -Syu --needed $all_apps
 #sudo firewall-cmd --add-port=1025-65535/tcp --permanent
 #sudo firewall-cmd --add-port=1025-65535/udp --permanent
 #sudo firewall-cmd --reload
