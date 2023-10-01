@@ -13,7 +13,7 @@ sudo hwclock --systohc
 gnome="gnome"
 
 # Lists of general applications/drivers
-cli_apps="lf"
+cli_apps="lf tldr timew task"
 pipewire_explicit="pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack"
 multimedia_apps="pavucontrol vlc filezilla"
 communication_apps="discord telegram-desktop teamspeak3"
@@ -48,7 +48,7 @@ else
     exit 1
 fi
 
-sudo -u drace paru -S --needed librewolf-bin
+sudo -u drace paru -S --needed librewolf-bin abook
 
 
 # sudo flatpak install -y spotify
