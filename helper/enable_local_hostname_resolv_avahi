@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Follows archwiki tutorial on printer cups setup. Scanning worked without this configuration.
+
+# Tutorial is on https://wiki.archlinux.org/title/Avahi#Hostname_resolution 
+# Enables local hostname resolution in avahi, avahi-daemon.service also has to be turned on for scanning/printing
+if grep -qF 'mdns_minimal [NOTFOUND=return] resolve' /etc/nsswitch.conf; then
+    echo 'local hostname resolution for avahi/nss-mdns is already enabled.'
+else
+    sed -i 's/resolve.*dns/mdns_minimal [NOTFOUND=return] &/' /etc/nsswitch.conf
+    echo 'local hostname resolution for avahi/nss-mdns enabled.'
+fi
+

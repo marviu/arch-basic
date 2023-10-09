@@ -21,7 +21,7 @@ cp $script_dir/pacman.conf /etc/
 pacman -Syy
 $h/initialise_reflector "France,Germany,Belgium,Denmark"
 
-pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs
+pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs avahi nss-mdns cups
 
 # pacman -S --noconfirm xf86-video-amdgpu
 
@@ -30,18 +30,18 @@ $h/uncomment_line /etc/default/grub "GRUB_DISABLE_OS_PROBER=false"
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Set up package configurations (xdg-user-dirs, vim spacing, ...)
+# Set up package configurations (xdg-user-dirs, vim spacing, nss-mdns for printing, ...)
 sed -i 's/=.*/\L&/' /etc/xdg/user-dirs.defaults
 $h/findOrAdd_line /etc/vimrc "set tabstop=4 shiftwidth=4 expandtab" '" Make tabbing work as expected, shiftwidth is for << and >>'
+$h/enable_local_hostname_resolv_avahi
 
 
 systemctl enable NetworkManager
 systemctl enable reflector.timer
+systemctl enable cups.service
+systemctl enable avahi-daemon
 #systemctl enable bluetooth
-#systemctl enable cups.service
 #systemctl enable sshd
-#systemctl enable avahi-daemon
-#systemctl enable reflector.timer
 #systemctl enable fstrim.timer
 #systemctl enable firewalld
 #systemctl enable acpid
