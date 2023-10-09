@@ -15,7 +15,7 @@ gnome="gnome"
 # Lists of general applications/drivers
 cli_apps="lf tldr timew task flatpak"
 pipewire_explicit="pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack"
-multimedia_apps="pavucontrol vlc filezilla"
+multimedia_apps="pavucontrol vlc filezilla libreoffice-still"
 communication_apps="discord telegram-desktop teamspeak3"
 fonts="noto-fonts-cjk"
 
