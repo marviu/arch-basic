@@ -25,6 +25,6 @@ else
 fi
 
 # List of specific applications
-hyprland="hyprland"
+hyprland="hyprland wofi waybar fnott"
 sudo pacman -Syu --needed $hyprland
 
