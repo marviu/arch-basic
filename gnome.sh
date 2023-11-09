@@ -17,7 +17,7 @@ cli_apps="lf tldr timew task flatpak"
 pipewire_explicit="pipewire wireplumber pipewire-audio pipewire-alsa pipewire-pulse pipewire-jack lib32-pipewire lib32-pipewire-jack"
 multimedia_apps="pavucontrol vlc filezilla libreoffice-still"
 communication_apps="discord telegram-desktop teamspeak3"
-fonts="noto-fonts-cjk"
+fonts="noto-fonts-cjk adobe-source-code-pro-fonts"
 
 # Requirements taken from LeagueOfLinux, it's AMD-typed(!!)
 gaming_apps="lutris steam"
