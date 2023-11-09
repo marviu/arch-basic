@@ -21,7 +21,7 @@ cp $script_dir/pacman.conf /etc/
 pacman -Syy
 $h/initialise_reflector "France,Germany,Belgium,Denmark"
 
-pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs avahi nss-mdns cups
+pacman -S --needed grub efibootmgr os-prober networkmanager base-devel xdg-user-dirs avahi nss-mdns cups docker
 
 # pacman -S --noconfirm xf86-video-amdgpu
 
@@ -40,6 +40,7 @@ systemctl enable NetworkManager
 systemctl enable reflector.timer
 systemctl enable cups.service
 systemctl enable avahi-daemon
+systemctl enable docker.socket
 #systemctl enable bluetooth
 #systemctl enable sshd
 #systemctl enable fstrim.timer
