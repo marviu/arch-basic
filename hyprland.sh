@@ -26,5 +26,8 @@ fi
 
 # List of specific applications
 hyprland="hyprland wofi waybar fnott"
-sudo pacman -Syu --needed $hyprland
+hypr_screenshots="grim slurp wl-clipboard"
+
+all_apps="$hyprland $hypr_screenshots"
+sudo pacman -Syu --needed $all_apps
 
